@@ -20,9 +20,10 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'tomasr/molokai'
-Plugin 'Valloric/YouCompleteMe'    "没安装成功
+Plugin 'Valloric/YouCompleteMe'    
 Plugin 'Solarized'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 
 " 来自 http://vim-scripts.org/vim/scripts.html 的插件
 " Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
@@ -60,9 +61,19 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 """""""vim-airline"""""""
 set laststatus=2
 """""""colorscheme""""""
+set t_Co=256
 set background=dark
 colorscheme solarized
 """"""nerdtree""""""""""
+""""""youcompleteme""""""
+let g:ycm_globle_ycm_extra_conf='~/.ycm_extra_conf.py'      " 如果找不到配置文件则采用全局配置
+let g:ycm_confirm_extra_conf=0                              " 不要每次都确认配置文件位置
+let g:syntastic_always_populate_loc_list=1                  " 开启语法检查，需要用到syntastic插件
+let g:ycm_collect_identifiers_from_tags_files = 1 "开启基于标签的引擎
+let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释与字符串中的内容也用于补全
+let g:ycm_complete_in_comments = 1                          " 在注释输入中也能补全
+let g:ycm_complete_in_strings = 1                           " 在字符串输入中也能补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
 
 
 """"""""""""""""""""""""""""space&tab"""""""""""""""""""""""""""""""""""""""""
@@ -174,6 +185,5 @@ endif
 
 
 set showmatch
-set syntax=on
 set tags=${PETSC_DIR}/CTAGS
 
