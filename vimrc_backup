@@ -65,15 +65,17 @@ set t_Co=256
 set background=dark
 colorscheme solarized
 """"""nerdtree""""""""""
+noremap <F2> :NERDTreeToggle<CR>
 """"""youcompleteme""""""
 let g:ycm_globle_ycm_extra_conf='~/.ycm_extra_conf.py'      " 如果找不到配置文件则采用全局配置
 let g:ycm_confirm_extra_conf=0                              " 不要每次都确认配置文件位置
 let g:syntastic_always_populate_loc_list=1                  " 开启语法检查，需要用到syntastic插件
-let g:ycm_collect_identifiers_from_tags_files = 1 "开启基于标签的引擎
+let g:ycm_collect_identifiers_from_tags_files = 1           "开启基于标签的引擎
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释与字符串中的内容也用于补全
 let g:ycm_complete_in_comments = 1                          " 在注释输入中也能补全
 let g:ycm_complete_in_strings = 1                           " 在字符串输入中也能补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 """"""""""""""""""""""""""""space&tab"""""""""""""""""""""""""""""""""""""""""
@@ -129,11 +131,26 @@ function! InsertTabWrapper()
         return "\<c-p>"
     endif
 endfunction
+
+
+
+" Keybinding with Leader****************************
+" set mapleader
+let mapleader=" "
+
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <S-Tab> <c-n>
 
 " Switch between the last two files
-nnoremap <Leader><Leader> <c-^>
+nnoremap <Leader><Tab> <c-^>
+
+" Switch between different tabs
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 2gt
+nnoremap <Leader>3 3gt
+nnoremap <Leader>4 4gt
+nnoremap <Leader>6 6gt
+nnoremap <Leader>7 7gt
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -186,4 +203,5 @@ endif
 
 set showmatch
 set tags=${PETSC_DIR}/CTAGS
+set tags+=./tags
 
