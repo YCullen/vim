@@ -1,5 +1,5 @@
 " Cullen's .vimrc
-" 2017.11.23
+" 2019.03.26
 
 set nocompatible
 filetype off      " 设置vundle插件管理器
@@ -17,14 +17,13 @@ Plugin 'VundleVim/Vundle.vim'
 " 请将安装插件的命令放在vundle#begin和vundle#end之间.
 " Github上的插件
 " 格式为 Plugin '用户名/插件仓库名'
-"Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'tomasr/molokai'
 Plugin 'Valloric/YouCompleteMe'    
 Plugin 'Solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-
 " 来自 http://vim-scripts.org/vim/scripts.html 的插件
 " Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
 "Plugin 'L9'
@@ -75,8 +74,21 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释与字符串
 let g:ycm_complete_in_comments = 1                          " 在注释输入中也能补全
 let g:ycm_complete_in_strings = 1                           " 在字符串输入中也能补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
+let g:ycm_autoclose_preview_window_after_completion=1       " 自动补全后删除后补窗口
+" map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR> " 转到定义位置
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""语言设置"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""python setting""""
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
 
 """"""""""""""""""""""""""""space&tab"""""""""""""""""""""""""""""""""""""""""
 set backspace=2   " Backspace deletes like most programs in insert mode
@@ -132,7 +144,12 @@ function! InsertTabWrapper()
     endif
 endfunction
 
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
 
+" Enable system clipboard
+set clipboard=unnamed
 
 " Keybinding with Leader****************************
 " set mapleader
