@@ -24,6 +24,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'Solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'jiangmiao/auto-pairs'
 " 来自 http://vim-scripts.org/vim/scripts.html 的插件
 " Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
 "Plugin 'L9'
@@ -171,10 +172,10 @@ nnoremap <Leader>6 6gt
 nnoremap <Leader>7 7gt
 
 " Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+" nnoremap <Left> :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up> :echoe "Use k"<CR>
+" nnoremap <Down> :echoe "Use j"<CR>
 
 " vim-test mappings
 nnoremap <silent> <Leader>t :TestFile<CR>
