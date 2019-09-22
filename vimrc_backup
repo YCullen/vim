@@ -18,13 +18,15 @@ Plugin 'VundleVim/Vundle.vim'
 " Github上的插件
 " 格式为 Plugin '用户名/插件仓库名'
 Plugin 'tpope/vim-fugitive'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tomasr/molokai'
 Plugin 'Valloric/YouCompleteMe'    
-Plugin 'Solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'altercation/vim-colors-solarized'
+"
 " 来自 http://vim-scripts.org/vim/scripts.html 的插件
 " Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
 "Plugin 'L9'
@@ -60,9 +62,11 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 
 """""""vim-airline"""""""
 set laststatus=2
+let g:airline_solarized_bg='dark'
 """""""colorscheme""""""
 set t_Co=256
 set background=dark
+let g:solarized_termtrans = 1
 colorscheme solarized
 """"""nerdtree""""""""""
 noremap <F2> :NERDTreeToggle<CR>
@@ -126,7 +130,7 @@ endif
 
 " Make it obvious where 80 characters is
 " set textwidth=80
-set colorcolumn=+1
+" set colorcolumn=+1
 
 " Numbers
 set number
