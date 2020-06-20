@@ -6,6 +6,7 @@ filetype off      " 设置vundle插件管理器
 """""""""""""""""""""""""""""""START""""""""""""""""""""""""""""""""""""""""
 " 设置包括vundle和初始化相关的runtime path
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/home/harriszh/.fzf/
 call vundle#begin()
 " 另一种选择, 指定一个vundle安装插件的路径
 "call vundle#begin('~/some/path/here')
@@ -26,6 +27,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-surround'
+Plugin 'junegunn/fzf.vim'
+"Plugin 'dhruvasagar/vim-table-mode'
 "
 " 来自 http://vim-scripts.org/vim/scripts.html 的插件
 " Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
@@ -70,10 +74,24 @@ let g:solarized_termtrans = 1
 colorscheme solarized
 """"""nerdtree""""""""""
 noremap <F2> :NERDTreeToggle<CR>
+
+""""""syntastic""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = '/usr/local/Cellar/python/3.7.7/bin/python3'
 """"""youcompleteme""""""
 let g:ycm_globle_ycm_extra_conf='~/.ycm_extra_conf.py'      " 如果找不到配置文件则采用全局配置
 let g:ycm_confirm_extra_conf=0                              " 不要每次都确认配置文件位置
 let g:syntastic_always_populate_loc_list=1                  " 开启语法检查，需要用到syntastic插件
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:ycm_collect_identifiers_from_tags_files = 1           "开启基于标签的引擎
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释与字符串中的内容也用于补全
 let g:ycm_complete_in_comments = 1                          " 在注释输入中也能补全
@@ -81,6 +99,10 @@ let g:ycm_complete_in_strings = 1                           " 在字符串输入
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
 let g:ycm_autoclose_preview_window_after_completion=1       " 自动补全后删除后补窗口
 " map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR> " 转到定义位置
+
+"""""fzf"""""
+set rtp+=/usr/local/opt/fzf
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -94,6 +116,7 @@ au BufNewFile,BufRead *.py
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix
+
 
 """"""""""""""""""""""""""""space&tab"""""""""""""""""""""""""""""""""""""""""
 set backspace=2   " Backspace deletes like most programs in insert mode
@@ -133,7 +156,7 @@ endif
 " set colorcolumn=+1
 
 " Numbers
-set number
+set rnu
 set numberwidth=4
 
 " Tab completion
@@ -175,6 +198,7 @@ nnoremap <Leader>5 5gt
 nnoremap <Leader>6 6gt
 nnoremap <Leader>7 7gt
 
+
 " Get off my lawn
 " nnoremap <Left> :echoe "Use h"<CR>
 " nnoremap <Right> :echoe "Use l"<CR>
@@ -191,12 +215,16 @@ nnoremap <silent> <Leader>gt :TestVisit<CR>
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
 
+" fzf Keybinding
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>t :BTags<CR>
+
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
 " Open new split panes to right and bottom, which feels more natural
-set splitbelow
 set splitright
+set splitbelow
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -225,6 +253,5 @@ endif
 
 
 set showmatch
-set tags=${PETSC_DIR}/CTAGS
-set tags+=./tags
+set tags=./tags;../tags;.../tags/
 
