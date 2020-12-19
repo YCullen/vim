@@ -118,6 +118,11 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 
 
+
+
+""""设置编译调试代码""""
+map <F8> :w <CR> :!g++ -std=c++11 % -o %< <CR>
+
 """"""""""""""""""""""""""""space&tab"""""""""""""""""""""""""""""""""""""""""
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
@@ -253,5 +258,5 @@ endif
 
 
 set showmatch
-set tags=./tags;../tags;.../tags/
+set tags=./tags,tags;$HOME
 
